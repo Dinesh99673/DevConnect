@@ -15,7 +15,7 @@ const LandingPage = () => {
           DevConnect is the digital playground where developers unite to build, learn, and grow together.
         </p>
         <div className="flex flex-col md:flex-row gap-4 mt-8">
-          <Link to="/register" className="px-6 py-3 bg-[#82D9D9] text-black font-semibold rounded-lg shadow-lg hover:bg-[#5fc6c6] transition-transform transform hover:-translate-y-1">
+          <Link to="/signup" className="px-6 py-3 bg-[#82D9D9] text-black font-semibold rounded-lg shadow-lg hover:bg-[#5fc6c6] transition-transform transform hover:-translate-y-1">
             Join the Community
           </Link>
           <Link to="/login" className="px-6 py-3 border-2 border-[#82D9D9] text-white font-semibold rounded-lg hover:bg-[#82D9D9]/10 transition-transform transform hover:-translate-y-1">
@@ -80,7 +80,7 @@ const LandingPage = () => {
         <p className="text-lg text-gray-400 mb-8 max-w-xl mx-auto">
           Start connecting with global developers who are building the future.
         </p>
-        <Link to="/register" className="px-8 py-4 text-lg font-bold rounded-xl bg-[#82D9D9] text-black hover:bg-[#5fc6c6] transition-all shadow-lg">
+        <Link to="/signup" className="px-8 py-4 text-lg font-bold rounded-xl bg-[#82D9D9] text-black hover:bg-[#5fc6c6] transition-all shadow-lg">
           Join DevConnect Now
         </Link>
       </section>
