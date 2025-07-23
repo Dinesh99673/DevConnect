@@ -1,8 +1,11 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Mail, Key, User, Github, Globe, ArrowLeft } from "lucide-react";
+import { Snackbar, Alert, Button } from "@mui/material";
+
 
 export default function Signup() {
+  const [showAlert, setShowAlert] = useState(false);
   const [step, setStep] = useState(1);
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
@@ -47,6 +50,7 @@ export default function Signup() {
 
   const handleSendOtp = () => {
     setStep(2);
+    setShowAlert(true);
   };
 
   const handleVerifyOtp = () => {
@@ -210,7 +214,19 @@ export default function Signup() {
         <div className="text-center text-sm text-slate-400">
           Already have an account? <a href="/login" className="text-cyan-400 hover:underline">Login</a>
         </div>
+
       </div>
+      {/*Popup alert (still a sample needs more configurations) */}
+      <Snackbar
+        open={showAlert}
+        autoHideDuration={3000}
+        onClose={()=>setShowAlert(false)}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert onClose={()=>setShowAlert(false )} severity="error" variant="filled" sx={{ width: "100%" }}>
+          Something is wromg!
+        </Alert>
+      </Snackbar>
     </div>
   );
 }

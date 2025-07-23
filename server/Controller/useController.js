@@ -2,7 +2,7 @@ const { User, Personal_message } = require('../models');
 const { Op, Model } = require('sequelize');
 
 const getChattedUsers = async (req, res) => {
-  const loggedInUserId = req.body.userId;
+  const loggedInUserId = req.data.userId;
     console.log(req.data);
     
   try {

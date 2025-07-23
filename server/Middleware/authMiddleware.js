@@ -11,8 +11,10 @@ const authenticate = (req, res, next) => {
     try {
         // Verify the token using the secret key
         const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+
         // Attach decoded payload to request object
         req.data = decoded;
+        
         next();
     } catch (err) {
         // Token is invalid or expired

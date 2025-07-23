@@ -73,16 +73,16 @@ const login = async (req, res) => {
     const match = await bcrypt.compare(password, user.password);
 
     // If password mismatch, send error
-    if (!match) return res.status(401).json({ msg: 'Invalid password' });
+    if (!match) return res.status(401).json({ msg: 'Invalid password' });    
 
     // Generate JWT token with user id payload
     const token = jwt.sign(
-      { userId: user.user_id },
+      { userId: user.id },
       process.env.JWT_SECRET_KEY,
       { expiresIn: '30d' } // auto expiry
     );
     // Send token in response
-    res.json({ token, messagess:"Login successfull. Token sended" });
+    res.status(200).json({ token, messagess:"Login successfull. Token sended" });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ msg: 'Login failed' });
@@ -154,7 +154,7 @@ try{
     }
 
     //Create JWT token with email and cuurrent timestamp
-    const token = jwt.sign({ email: data.email, time: data.createdAt }, process.env.JWT_SECRET_KEY);
+    const token = jwt.sign({ email: data.email, time: data.createdAt }, process.env.JWT_SECRET_KEY, { expiresIn: '300s' } );
 
     return res.status(200).json({token:token, message:"OTP verified successfully.", status: true})
   }catch(error){
