@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Particles } from "@/components/ui/particles.jsx"
 import { CodeXml } from "lucide-react"
 import { Mail, Lock, Eye, EyeOff } from "lucide-react"
@@ -7,15 +7,25 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { Link } from "react-router-dom"
+import {useAuth} from "@/hooks/useAuth"
+import { useNavigate } from "react-router-dom"
 
 const Login = () => {
-
-  const [showPassword, setShowPassword] = useState(false)
+  const {isLoggedIn} = useAuth();
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  useEffect(()=>{
+    if(isLoggedIn){
+      navigate("/")
+    }
+    console.log("User is not loggedIn");
+    
+  })
 
   return (
     <Particles className="bg-linear-to-br from-[#0B1020] via-[#0F172A] to-[#020617]">
       <div className="w-full h-full flex items-center justify-center">
-        <div className="w-1/4 flex flex-col items-center justify-center">
+        <div className="w-1/2 md:w-1/4 flex flex-col items-center justify-center">
           <p className="mb-5 flex items-center gap-2 text-xl sm:text-2xl md:text-3xl lg:text-4xl">
             <CodeXml className="size-6 text-blue-500 sm:size-7 md:size-8 lg:size-9 shrink-0" />
             DevConnect
@@ -85,8 +95,8 @@ const Login = () => {
                 <span className="bg-card px-2 text-muted-foreground">or sign in with</span>
               </div>
             </div>
-            <div className="flex justify-center gap-3">
-              <Button variant="outline" size="icon" className="w-1/2">
+            <div className="flex justify-center gap-3 w-full">
+              <Button variant="outline" size="icon" className="w-[70%] h-full p-1 flex flex-col md:flex-row">
                 <SiGoogle color="#4285F4" size={20} /> 
                 Sign in with google
               </Button>

@@ -3,6 +3,7 @@ import { Toaster } from "@/components/ui/sonner"
 import Home from "@/pages/Home"
 import Login from "@/pages/Login"
 import Signup from "@/pages/Signup"
+import { AuthProvider } from "@/contexts/authContext";
 import "./App.css"
 
 const Router = () =>{
@@ -17,10 +18,12 @@ const Router = () =>{
 
 function App() {
   return (
-    <BrowserRouter>
-      <Router />
-      <Toaster />
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Router />
+        <Toaster />
+      </BrowserRouter>
+    </AuthProvider>
   )
 }
 
